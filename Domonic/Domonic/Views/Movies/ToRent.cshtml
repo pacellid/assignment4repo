@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "ToRent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*
+    create a form,
+    a list of checkboxes where each checkbox is a movie from the "movies" List,
+    users will select the movies they'd like to rent, 
+    users will then press a submit button,
+    returning a results page displaying: movies rented, date rented, return date, and thank you message
+
+*@
+<form class="movies_list">
+    @foreach (Movie : movies)
+    {
+        <input type="checkbox" name=@Model.Id value=@Model.Name />
+    }
+
+    <input type="submit" value="Rent Movie(s)" />
+</form>
+
