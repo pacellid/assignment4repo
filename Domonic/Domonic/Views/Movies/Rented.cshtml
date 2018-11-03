@@ -1,8 +1,12 @@
-﻿
-@{
-    ViewBag.Title = "Rented";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@Domonic.Models.MovieModel
 
-<h2>Rented</h2>
+
+<div class="container">
+    @foreach(var item in Model.SelectedMovies)
+    { 
+        <p>item</p>
+        <br />
+    }
+</div>
+
 

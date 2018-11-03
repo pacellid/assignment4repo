@@ -9,29 +9,35 @@ namespace Domonic.Controllers
 {
     public class MoviesController : Controller
     {
-        // GET: Movies
         public ActionResult ToRent()
-        {        
-            return View();
+        {
+            var model = new MovieModel
+            {
+                AvailableMovies = AvailableMovies()
+            };
+            return View(model);
         }
 
         //generate the list of movies I am going to put up for rent
-        private void createMovies()
+        private IList<SelectListItem> AvailableMovies()
         {
-            List<Movie> movies = new List<Movie>();
+            return new List<SelectListItem>
+            {
+            new SelectListItem { Value = "GhostBusters", Text = "GhostBusters" },
+            new SelectListItem { Value = "Raising Arizona", Text = "Raising Arizona" },
+            new SelectListItem { Value = "Charlie and The Chocolate Factory", Text = "Charlie and The Chocolate Factory" },
+            new SelectListItem { Value = "Batman Begins", Text = "Batman Begins" },
+            new SelectListItem { Value = "Apocalypse Now", Text = "Apocalypse Now" },
+            new SelectListItem { Value = "Back To The Future", Text = "Back To The Future" },
+            new SelectListItem { Value = "John Wick", Text = "John Wick" },
+            new SelectListItem { Value = "Star Wars: Return of The Jedi", Text = "Star Wars: Return of The Jedi" },
+            new SelectListItem { Value = "Avengers: Infinity War", Text = "Avengers: Infinity War" },
+            new SelectListItem { Value = "Bill and Ted's Excellent Adventure", Text = "Bill and Ted's Excellent Adventure" }
+        };
+        
 
-            movies.Add(new Movie { Id = 1, Name = "GhostBusters" });
-            movies.Add(new Movie { Id = 2, Name = "Raising Arizona" });
-            movies.Add(new Movie { Id = 3, Name = "Charlie and The Chocolate Factory" });
-            movies.Add(new Movie { Id = 4, Name = "Batman Begins" });
-            movies.Add(new Movie { Id = 5, Name = "Apocalypse Now" });
-            movies.Add(new Movie { Id = 6, Name = "Back To The Future" });
-            movies.Add(new Movie { Id = 7, Name = "John Wick" });
-            movies.Add(new Movie { Id = 8, Name = "Star Wars: Return of The Jedi" });
-            movies.Add(new Movie { Id = 9, Name = "Avengers: Infinity War" });
-            movies.Add(new Movie { Id = 10, Name = "Bill and Ted's Excellent Adventure" });
-
-          
         }
+    
     }
+    
 }

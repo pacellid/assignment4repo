@@ -1,22 +1,29 @@
-﻿@{
-    ViewBag.Title = "ToRent";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@model Domonic.Models.MovieModel
 
 @*
     create a form,
     a list of checkboxes where each checkbox is a movie from the "movies" List,
-    users will select the movies they'd like to rent, 
+    users will select the movies they'd like to rent,
     users will then press a submit button,
     returning a results page displaying: movies rented, date rented, return date, and thank you message
-
 *@
-<form class="movies_list">
-    @foreach (Movie : movies)
+<div class="container">
+    @using (Html.BeginForm("Rented", "Movies"))
     {
-        <input type="checkbox" name=@Model.Id value=@Model.Name />
-    }
+        foreach (var item in Model.AvailableMovies)
+        {
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"
+                           name="All Movies"
+                           value="@item.Value" /> @item.Text
+                    </label>
+                </div>
+            }
+            <div class="submit-button">
+                <input type="submit" value="Rent Movies" />
+            </div>
 
-    <input type="submit" value="Rent Movie(s)" />
-</form>
 
+
+</div >
