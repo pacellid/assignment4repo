@@ -9,6 +9,12 @@ namespace Domonic.Controllers
 {
     public class MoviesController : Controller
     {
+        public ActionResult Rented(IList<string> movies)
+        {
+            return View(movies);
+        }
+
+        [HttpGet]
         public ActionResult ToRent()
         {
             var model = new MovieModel
@@ -16,6 +22,17 @@ namespace Domonic.Controllers
                 AvailableMovies = AvailableMovies()
             };
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ToRent(MovieModel m)
+        {
+            if (ModelState.IsValid)
+            {
+                return View("Rented", m.SelectedMovies);
+            }
+            m.AvailableMovies = AvailableMovies();
+            return View(m);
         }
 
         //generate the list of movies I am going to put up for rent
