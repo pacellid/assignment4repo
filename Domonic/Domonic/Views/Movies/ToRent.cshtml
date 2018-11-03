@@ -8,22 +8,22 @@
     returning a results page displaying: movies rented, date rented, return date, and thank you message
 *@
 <div class="container">
-    @using (Html.BeginForm("Rented", "Movies"))
+    @using (Html.BeginForm("ToRent", "Movies"))
     {
         foreach (var item in Model.AvailableMovies)
         {
             <div class="checkbox">
                 <label>
                     <input type="checkbox"
-                           name="All Movies"
+                           name="SelectedMovies"
                            value="@item.Value" /> @item.Text
                     </label>
                 </div>
-            }
+        }
             <div class="submit-button">
                 <input type="submit" value="Rent Movies" />
             </div>
-
+    }
 
 
 </div >

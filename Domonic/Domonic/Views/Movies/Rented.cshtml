@@ -1,11 +1,11 @@
-﻿@Domonic.Models.MovieModel
+﻿@model IList<string>
 
 
 <div class="container">
-    @foreach(var item in Model.SelectedMovies)
+    @foreach(var item in Model.ToList())
     { 
-        <p>item</p>
-        <br />
+        <p>@item</p>
+        <br/>
     }
 </div>
 
